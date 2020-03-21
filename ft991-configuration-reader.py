@@ -12,7 +12,7 @@ import serial
 # configure the serial connections (the parameters differs on the device you are connecting to)
 ser = serial.Serial(
 	port='COM3',
-	baudrate=38400,
+	baudrate=4800,
 	parity=serial.PARITY_NONE,
 	stopbits=serial.STOPBITS_TWO,
 	bytesize=serial.EIGHTBITS,
