@@ -6,7 +6,7 @@
 # https://www.yaesu.com/downloadFile.cfm?FileID=10604&FileCatID=158&FileName=FT%2D991%5FCAT%5FOM%5FENG%5F1612%2DD0.pdf&FileContentType=application%2Fpdf
 
 import serial
-import responseparser
+import memorymanager
 
 # configure the serial connections (the parameters differs on the device you are connecting to)
 ser = serial.Serial(
@@ -37,7 +37,7 @@ for cmd in commandarray:
 	out = out.decode('ascii')
 
 	#test response parser
-	print('Response parser returned: ' + str(responseparser.parse(out)))
+	print('Response parser returned: ' + str(memorymanager.parse(cmd, out)))
 
 	print("Response: " + str(out) + ": " + str(len(out)) + "chars")
 
