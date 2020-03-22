@@ -43,13 +43,13 @@ def radio_memdump():
     f = open(f'{MEM_SAVE_FOLDER}/{filename}', 'ab')
     print(f'Writing to {filename}')
 
-    MDM_CMD = 'MT'
+    MEM_CMD = 'MT'
     print('Fetching memories...')
     i = 0
     while i < MEM_MAX:
         i += 1
         memnum = ('{0:03d}'.format(i))
-        cmd = MDM_CMD + memnum + ";"
+        cmd = MEM_CMD + memnum + ";"
         cmd = bytes(cmd, encoding="ascii")
         #print(str(cmd))
         ser.write(cmd)
