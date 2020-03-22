@@ -23,6 +23,13 @@ MEM_SAVE_FOLDER = './rigmemdumps'
 #   -tag, --tag             eg. FaveRepeater
 
 
+##recover saved memories from rigmemdumps file
+#with open('rigmemdumps/03-21-2020_22-33-09-816616', 'r') as f:
+#    for line in f:
+#        line = line.rstrip()
+#        line = bytes(str(line), encoding="ascii")
+#        print(line)
+
 #dump all memory to file
 def radio_memdump():
     #connect to serial port
@@ -40,7 +47,7 @@ def radio_memdump():
     if not os.path.exists(MEM_SAVE_FOLDER):
         os.makedirs(MEM_SAVE_FOLDER)
     filename = str(datetime.now().strftime("%m-%d-%Y_%H-%M-%S-%f"))
-    f = open(f'{MEM_SAVE_FOLDER}/{filename}', 'ab')
+    f = open(f'{MEM_SAVE_FOLDER}/{filename}', 'a')
     print(f'Writing to {filename}')
 
     MEM_CMD = 'MT'
@@ -56,9 +63,8 @@ def radio_memdump():
         out = ser.readline()
         if out != b'?;':
             #write to file
-            f.write(out)
-            print(out)
-
+            f.write(out.decode('ascii') + "\n")
+            
     print('All done. Closing port and file')
     f.close()
     ser.close()
