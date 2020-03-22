@@ -1,3 +1,4 @@
-scratch.py
+scratch*.py
 .vscode/launch.json
 __pycache__/*
+rigmemdumps/*
