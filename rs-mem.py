@@ -34,14 +34,7 @@ MEM_SAVE_FOLDER = './rigmemdumps'
 def radio_memdump():
     #connect to serial port
     print('Connecting to port')
-    ser = serial.Serial(
-	port='COM3',
-	baudrate=4800,
-	parity=serial.PARITY_NONE,
-	stopbits=serial.STOPBITS_TWO,
-	bytesize=serial.EIGHTBITS,
-    timeout=0.1
-    )
+    ser = rsutils.get_serial()
 
     #open a file for appending
     if not os.path.exists(MEM_SAVE_FOLDER):
