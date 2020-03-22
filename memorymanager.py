@@ -2,11 +2,13 @@
 #Yaesu FT991A set for now
 #CAT commands manual: https://www.yaesu.com/downloadFile.cfm?FileID=10604&FileCatID=158&FileName=FT%2D991%5FCAT%5FOM%5FENG%5F1612%2DD0.pdf&FileContentType=application%2Fpdf
 
+import logging
+
 def parse(cmd, resp):
     cmdlen = len(cmd)
     resplen = len(resp)
-    print("Command length was: " + str(cmdlen))
-    print("Response length was: " + str(resplen))
+    logging.debug("Command length was: " + str(cmdlen))
+    logging.debug("Response length was: " + str(resplen))
 
     cmdstring = resp[0:2]
     #return(f'Parsed this: {resp}, command is this: {cmdstring}')
