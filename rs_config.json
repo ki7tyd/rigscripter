@@ -1,0 +1,6 @@
+{
+    "mem_dumps_folder": "./rigmemdumps",
+    "rig_serial_config_file": "./rig_serialconfig.json",
+    "radio_type": "YaesuFT991a",
+    "logfile": "rigscripter.log"
+}
