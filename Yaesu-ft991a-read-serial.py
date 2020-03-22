@@ -7,9 +7,11 @@
 import json
 import serial
 import memorymanager
+import logging
 import rsutils #project import
 
-ser = rsutils.get_serial()
+#get logifle name from global config and start logging
+logging.basicConfig(filename=rsutils.read_rs_config_file()["logfile"], level=logging.DEBUG)
 
 #commandarray = 	['FB147960000', 'FA146960000', 'FB']
 commandarray = ['MT001']
@@ -17,24 +19,19 @@ commandarray = ['MT001']
 i = 0
 for cmd in commandarray:
 	i += 1
-	cmd = f'{cmd};'
-	cmd = bytes(cmd, encoding="ascii")
-	print("Sending " + str(i) + ": " + str(cmd))
+	cmd = rsutils.cmdstr_to_cmdbin(cmd)
 	
-	#write cmd to serial
-	ser.write(cmd)
-		
-	#read response
-	#out = ser.read(100) #this works doesn't depend on EOL characters
-	out = ser.readline()
-	out = out.decode('ascii')
+	logging.debug("Sending " + str(i) + ": " + str(cmd))
+	out = rsutils.send_rig_cmd(cmd)
+	
+	logging.debug("variable out is type: " + str(type(out)))
+	strout = rsutils.cmdbin_to_cmdstr(out)
 
 	#test response parser
-	print('Response parser returned: ' + str(memorymanager.parse(cmd, out)))
-
-	print("Response: " + str(out) + ": " + str(len(out)) + "chars")
+	logging.debug("Response: " + strout + " " + str(len(out)) + "chars")
+	print('Response parser returned: ' + str(memorymanager.parse(cmd, strout)))
 
 
 #close the connection
-ser.close()
+#ser.close()
 
