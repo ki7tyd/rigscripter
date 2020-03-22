@@ -1,8 +1,8 @@
-import serial
 import argparse
 from datetime import datetime
 import os
 import memorymanager ## project import
+import rsutils ## project import
 
 #strftime: https://strftime.org/
 
@@ -11,9 +11,8 @@ MEM_SAVE_FOLDER = './rigmemdumps'
 
 #API
 #add memory
-#rs.py mem 
+#rs.py 146.960M
 #   -m, --memslot 2         eg. 2
-#   -f, --freq 146960000    eg. 146960000 
 #   -c, --clar_offset       eg. +500 
 #   -rc, --rxclar           On/Off
 #   -tc, --txclar           On/Off 
