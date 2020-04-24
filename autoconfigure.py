@@ -4,6 +4,7 @@ import serial
 #config file TODO read this out of a master config file
 RIG_SERIAL_CONFIG_FILE = './rig_serialconfig.json'
     
+#adding a comment
 
 def autoconfigure():
     
