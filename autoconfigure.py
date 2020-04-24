@@ -5,6 +5,7 @@ import serial
 RIG_SERIAL_CONFIG_FILE = './rig_serialconfig.json'
     
 #adding a comment
+#adding another comment
 
 def autoconfigure():
     
